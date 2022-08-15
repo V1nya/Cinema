@@ -1,0 +1,26 @@
+<div th:fragment="header" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <header>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-mb-4 mb-3 border-bottom">
+    <h5 class="my-0 mr-md-auto font-weigth-normal">Кінотеатр 3D IMAX</h5>
+    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/">Головна</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/films">Фільми</a>
+
+<!--        <a class="me-3 py-2 text-dark text-decoration-none" href="/admin">Я-Адміністратор</a>-->
+    </nav>
+
+    <div sec:authorize="!isAuthenticated()"  class="text-end">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/login">Вхід</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/registration">Реєстрація</a>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+
+        <form th:action="@{/logout}"  method="post">
+            <button   type="button" class="btn btn-outline-light me-2"><a class="me-3 py-2 text-dark text-decoration-none" href="/personalArea">Особистий кабінет</a></button>
+            <input class="btn  me-2" type="submit" value="Вийти"/>
+        </form>
+    </div>
+</div>
+    </header>
+
+</div>
